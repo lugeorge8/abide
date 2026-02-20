@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteHeader, SiteFooter } from "@/components/site-shell";
 
 const featuredEvents = [
   {
@@ -46,63 +46,14 @@ const faqs = [
   },
 ] as const;
 
-import { SiteFooter } from "@/components/site-shell";
+// (removed duplicate import)
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Header (shared) */}
+      {/* Header */}
       <div className="mx-auto w-full max-w-6xl px-4 pt-6">
-        {/* We already have a sticky header in HeroShell via other pages.
-            Keep home nav consistent by using the same pattern here. */}
-        <div className="sticky top-0 z-20 -mx-2 rounded-3xl border border-black/10 bg-white/80 px-2 py-2 backdrop-blur">
-          <div className="flex items-center justify-between gap-6 px-2 py-2">
-            <Link href="/" className="flex items-center gap-4">
-              <div className="grid h-16 w-16 place-items-center rounded-3xl bg-abide-gold text-2xl font-black text-abide-deep">
-                A
-              </div>
-              <div>
-                <div className="text-lg font-semibold tracking-tight text-black">
-                  Abide Church
-                </div>
-                <div className="text-sm text-abide-muted">San Jose, CA</div>
-              </div>
-            </Link>
-
-            <nav className="hidden items-center gap-2 sm:flex">
-              <Link
-                href="/"
-                className="rounded-2xl bg-abide-gold px-5 py-3 text-base font-semibold text-abide-deep"
-              >
-                Home
-              </Link>
-              <Link
-                href="/im-new"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                I&apos;m New
-              </Link>
-              <Link
-                href="/events"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                Events
-              </Link>
-              <Link
-                href="/sermons"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                Sermons
-              </Link>
-              <Link
-                href="/contact"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                Contact
-              </Link>
-            </nav>
-          </div>
-        </div>
+        <SiteHeader active="home" />
       </div>
 
       {/* Hero */}
