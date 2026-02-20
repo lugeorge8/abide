@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { Reveal } from "@/components/reveal";
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
 
 const featuredEvents = [
@@ -60,6 +61,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="relative lg:col-span-7">
             {/* resonate-like circle background */}
@@ -123,10 +125,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* Featured Events */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight">Featured Events</h2>
@@ -147,10 +151,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+        </Reveal>
       </section>
 
       {/* Community */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Community</h2>
         <p className="mt-2 text-sm text-abide-muted">
           Find your place to grow, connect, and serve.
@@ -222,10 +228,12 @@ export default function Home() {
             </div>
           );
         })()}
+        </Reveal>
       </section>
 
       {/* FAQ */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Frequently Asked Questions</h2>
         <p className="mt-2 text-sm text-abide-muted">
           Have questions? We have the answers!
@@ -246,10 +254,12 @@ export default function Home() {
             </div>
           ))}
         </div>
+        </Reveal>
       </section>
 
       {/* Lead Pastor */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">A WORD FROM OUR LEAD PASTOR</h2>
 
         <div className="mt-6 rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
@@ -263,10 +273,12 @@ export default function Home() {
           </p>
           <div className="mt-6 text-sm font-semibold text-abide-muted">Lead Pastor</div>
         </div>
+        </Reveal>
       </section>
 
       {/* Weekly Newsletter */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Weekly Newsletter</h2>
         <p className="mt-2 text-sm text-abide-muted">
           Weekly Newsletter
@@ -277,6 +289,7 @@ export default function Home() {
             (Link/Signup TBD)
           </p>
         </div>
+        </Reveal>
       </section>
 
       <SiteFooter />
