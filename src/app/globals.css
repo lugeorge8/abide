@@ -1,13 +1,31 @@
 @import "tailwindcss";
 
 :root {
+  /* Base */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+
+  /* Extracted from example site */
+  --abide-accent: #61CE70;
+  --abide-deep: #146D3F;
+  --abide-deep-2: #176B41;
+  --abide-gold: #F2C36B;
+  --abide-teal: #448481;
+  --abide-muted: #7A7A7A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Custom tokens */
+  --color-abide-accent: var(--abide-accent);
+  --color-abide-deep: var(--abide-deep);
+  --color-abide-deep-2: var(--abide-deep-2);
+  --color-abide-gold: var(--abide-gold);
+  --color-abide-teal: var(--abide-teal);
+  --color-abide-muted: var(--abide-muted);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,5 +40,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
