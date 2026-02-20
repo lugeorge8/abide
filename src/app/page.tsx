@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/reveal";
+import { ScrollRopeNav } from "@/components/scroll-rope-nav";
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
 
 const featuredEvents = [
@@ -59,8 +60,10 @@ export default function Home() {
         <SiteHeader active="home" />
       </div>
 
+      <ScrollRopeNav />
+
       {/* Hero */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="hero" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="relative lg:col-span-7">
@@ -129,7 +132,7 @@ export default function Home() {
       </section>
 
       {/* Featured Events */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="featured-events" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -155,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Community */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="community" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Community</h2>
         <p className="mt-2 text-sm text-abide-muted">
@@ -232,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="faq" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Frequently Asked Questions</h2>
         <p className="mt-2 text-sm text-abide-muted">
@@ -258,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* Lead Pastor */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="pastor" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">A WORD FROM OUR LEAD PASTOR</h2>
 
@@ -277,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* Weekly Newsletter */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+      <section id="newsletter" className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
         <h2 className="text-3xl font-semibold tracking-tight">Weekly Newsletter</h2>
         <p className="mt-2 text-sm text-abide-muted">
