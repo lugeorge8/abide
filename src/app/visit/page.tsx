@@ -1,8 +1,9 @@
-import { Card, ContentShell, HeroShell } from "@/components/site-shell";
+import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
 export default function VisitPage() {
   return (
-    <HeroShell active="visit">
+    <>
+      <HeroShell active="visit">
       <div>
         <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
           New here?
@@ -71,6 +72,9 @@ export default function VisitPage() {
           </div>
         </div>
       </ContentShell>
-    </HeroShell>
+      </HeroShell>
+
+      <SiteFooter />
+    </>
   );
 }

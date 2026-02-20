@@ -1,4 +1,4 @@
-import { Card, ContentShell, HeroShell } from "@/components/site-shell";
+import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
 const announcements = [
   {
@@ -27,7 +27,8 @@ const announcements = [
 
 export default function AnnouncementsPage() {
   return (
-    <HeroShell active="ann">
+    <>
+      <HeroShell active="ann">
       <div className="grid grid-cols-1 gap-8">
         <div>
           <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
@@ -68,6 +69,9 @@ export default function AnnouncementsPage() {
           </div>
         </ContentShell>
       </div>
-    </HeroShell>
+      </HeroShell>
+
+      <SiteFooter />
+    </>
   );
 }

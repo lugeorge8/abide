@@ -46,6 +46,8 @@ const faqs = [
   },
 ] as const;
 
+import { SiteFooter } from "@/components/site-shell";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
@@ -213,13 +215,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-black/10 bg-abide-deep text-white">
-        <div className="mx-auto w-full max-w-6xl px-4 py-12">
-          <div className="text-sm font-semibold">Abide Fellowship</div>
-          <div className="mt-1 text-xs text-white/80">A Ministry of CCIC</div>
+      {/* Weekly Newsletter */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <h2 className="text-3xl font-semibold tracking-tight">Weekly Newsletter</h2>
+        <p className="mt-2 text-sm text-abide-muted">
+          Weekly Newsletter
+        </p>
+        <div className="mt-6 rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
+          <div className="text-base font-semibold">Weekly Newsletter</div>
+          <p className="mt-2 text-sm text-black/80">
+            (Link/Signup TBD)
+          </p>
         </div>
-      </footer>
+      </section>
+
+      <SiteFooter />
     </div>
   );
 }

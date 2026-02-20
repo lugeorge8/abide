@@ -1,8 +1,9 @@
-import { Card, ContentShell, HeroShell } from "@/components/site-shell";
+import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
 export default function ContactPage() {
   return (
-    <HeroShell active="contact">
+    <>
+      <HeroShell active="contact">
       <div>
         <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
           Reach us
@@ -54,6 +55,9 @@ export default function ContactPage() {
           </div>
         </div>
       </ContentShell>
-    </HeroShell>
+      </HeroShell>
+
+      <SiteFooter />
+    </>
   );
 }

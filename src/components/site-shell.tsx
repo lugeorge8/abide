@@ -104,3 +104,91 @@ export function Card({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-16 border-t border-black/10 bg-abide-deep text-white">
+      <div className="mx-auto w-full max-w-6xl px-4 py-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="inline-flex rounded-2xl bg-white px-4 py-3">
+              <div className="text-sm font-semibold text-abide-deep">
+                Abide Fellowship
+              </div>
+              <div className="mx-2 text-abide-muted">•</div>
+              <div className="text-sm font-semibold text-abide-deep">
+                A Ministry of CCIC
+              </div>
+            </div>
+            <div className="mt-4 text-sm text-white/80">
+              San Jose, CA
+              <span className="mx-2 text-white/40">•</span>
+              Sundays
+              <span className="mx-2 text-white/40">•</span>
+              11:00 AM
+            </div>
+          </div>
+
+          <div className="md:col-span-7">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <div className="space-y-2">
+                <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                  Menu
+                </div>
+                <div className="flex flex-col gap-2 text-sm">
+                  <Link href="/" className="hover:text-white/90">
+                    Home
+                  </Link>
+                  <Link href="/about" className="hover:text-white/90">
+                    About Us
+                  </Link>
+                  <Link href="/events" className="hover:text-white/90">
+                    Events
+                  </Link>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                  Ministries
+                </div>
+                <div className="flex flex-col gap-2 text-sm">
+                  <Link href="/ministries" className="hover:text-white/90">
+                    Ministries
+                  </Link>
+                  <Link href="/resources" className="hover:text-white/90">
+                    Resources
+                  </Link>
+                  <Link href="/prayer" className="hover:text-white/90">
+                    Prayer
+                  </Link>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                  More
+                </div>
+                <div className="flex flex-col gap-2 text-sm">
+                  <Link href="/visit" className="hover:text-white/90">
+                    Visit
+                  </Link>
+                  <Link href="/contact" className="hover:text-white/90">
+                    Contact
+                  </Link>
+                  <Link href="/jesus" className="hover:text-white/90">
+                    Curious about Jesus?
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 text-xs text-white/60">
+          © {new Date().getFullYear()} Abide Fellowship. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  );
+}

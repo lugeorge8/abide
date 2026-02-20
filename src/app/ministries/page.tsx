@@ -1,8 +1,9 @@
-import { Card, ContentShell, HeroShell } from "@/components/site-shell";
+import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
 export default function MinistriesPage() {
   return (
-    <HeroShell active={undefined}>
+    <>
+      <HeroShell active={undefined}>
       <div>
         <div className="text-xs font-semibold uppercase tracking-widest text-black/60">
           Ministries
@@ -21,6 +22,9 @@ export default function MinistriesPage() {
           </p>
         </Card>
       </ContentShell>
-    </HeroShell>
+      </HeroShell>
+
+      <SiteFooter />
+    </>
   );
 }

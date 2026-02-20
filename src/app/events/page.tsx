@@ -1,4 +1,4 @@
-import { Card, ContentShell, HeroShell } from "@/components/site-shell";
+import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
 const featuredEvents = [
   {
@@ -29,7 +29,8 @@ const featuredEvents = [
 
 export default function EventsPage() {
   return (
-    <HeroShell active={undefined}>
+    <>
+      <HeroShell active={undefined}>
       <div>
         <div className="text-xs font-semibold uppercase tracking-widest text-black/60">
           Featured Events
@@ -52,6 +53,9 @@ export default function EventsPage() {
           ))}
         </div>
       </ContentShell>
-    </HeroShell>
+      </HeroShell>
+
+      <SiteFooter />
+    </>
   );
 }
