@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ParallaxBlobs } from "@/components/parallax-blobs";
 import { SiteHeaderClient } from "@/components/site-header";
 
 export function SiteHeader({ active }: { active?: string }) {
@@ -15,12 +16,8 @@ export function HeroShell({
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="relative overflow-hidden bg-abide-deep text-white">
-        {/* subtle accent glows */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-abide-gold/25 blur-3xl" />
-          <div className="absolute top-28 left-0 h-[360px] w-[520px] rounded-full bg-abide-accent/15 blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-[360px] w-[520px] rounded-full bg-abide-teal/12 blur-3xl" />
-        </div>
+        {/* subtle accent glows (parallax) */}
+        <ParallaxBlobs />
 
         <div className="relative mx-auto w-full max-w-6xl px-4 py-6 sm:py-8">
           <SiteHeader active={active} />
