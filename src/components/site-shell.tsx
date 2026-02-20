@@ -6,19 +6,19 @@ export function SiteHeader({
   active?: "home" | "ann" | "visit" | "contact";
 }) {
   const base =
-    "rounded-2xl px-4 py-2 text-sm font-semibold text-black/80 hover:bg-black/5";
+    "rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5";
   const activeCls =
-    "rounded-2xl bg-abide-gold px-4 py-2 text-sm font-semibold text-abide-deep";
+    "rounded-2xl bg-abide-gold px-5 py-3 text-base font-semibold text-abide-deep";
 
   return (
-    <header className="sticky top-0 z-20 -mx-2 flex items-center justify-between gap-4 rounded-3xl border border-black/10 bg-white/80 px-2 py-2 backdrop-blur">
-      <Link href="/" className="flex items-center gap-3">
-        <div className="grid h-10 w-10 place-items-center rounded-2xl bg-abide-gold font-black text-abide-deep">
+    <header className="sticky top-0 z-20 -mx-2 flex items-center justify-between gap-6 rounded-3xl border border-black/10 bg-white/80 px-4 py-4 backdrop-blur">
+      <Link href="/" className="flex items-center gap-4">
+        <div className="grid h-16 w-16 place-items-center rounded-3xl bg-abide-gold font-black text-abide-deep text-2xl">
           A
         </div>
         <div>
-          <div className="text-sm font-semibold tracking-tight text-black">Abide Church</div>
-          <div className="text-xs text-abide-muted">San Jose, CA</div>
+          <div className="text-lg font-semibold tracking-tight text-black">Abide Church</div>
+          <div className="text-sm text-abide-muted">San Jose, CA</div>
         </div>
       </Link>
 
