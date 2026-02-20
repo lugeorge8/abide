@@ -344,6 +344,15 @@ export function SiteHeaderClient({ active }: { active?: string }) {
         >
           CCIC Main <span className="text-black/30">↗</span>
         </a>
+
+        {/* Curious about Jesus? */}
+        <Link
+          href="/curious-about-jesus"
+          className="rounded-full border border-abide-teal/30 bg-abide-teal/10 px-5 py-3 text-base font-semibold text-abide-teal hover:bg-abide-teal/15"
+          onClick={() => setOpen(null)}
+        >
+          Curious about Jesus?
+        </Link>
       </nav>
     </header>
   );
