@@ -1,3 +1,9 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+type Tab = "announcements" | "visit" | "contact";
+
 const announcements = [
   {
     title: "Homegroups — Saturate (8-session study)",
@@ -23,12 +29,28 @@ const announcements = [
   },
 ] as const;
 
-const quickLinks = [
-  { label: "Watch on YouTube", href: "https://www.youtube.com" },
-  { label: "Plan a Visit", href: "#visit" },
-  { label: "Announcements", href: "#announcements" },
-  { label: "Contact", href: "#contact" },
-] as const;
+function TabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={
+        active
+          ? "rounded-2xl bg-yellow-400 px-4 py-2 text-sm font-semibold text-red-950"
+          : "rounded-2xl border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-white/85 hover:bg-white/10"
+      }
+    >
+      {children}
+    </button>
+  );
+}
 
 function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
   return (
@@ -46,6 +68,19 @@ function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
 }
 
 export default function Home() {
+  const [tab, setTab] = useState<Tab>("announcements");
+
+  const tabLabel = useMemo(() => {
+    switch (tab) {
+      case "announcements":
+        return "Announcements";
+      case "visit":
+        return "Plan a Visit";
+      case "contact":
+        return "Contact";
+    }
+  }, [tab]);
+
   return (
     <div className="min-h-screen text-white">
       {/* HERO */}
@@ -53,7 +88,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-red-950 to-red-950" />
         <div className="absolute inset-0 opacity-70">
           <div className="absolute -top-28 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-yellow-400/25 blur-3xl" />
-          <div className="absolute top-24 left-0 h-[420px] w-[520px] rounded-full bg-red-500/30 blur-3xl" />
+          <div className="absolute left-0 top-24 h-[420px] w-[520px] rounded-full bg-red-500/30 blur-3xl" />
           <div className="absolute bottom-0 right-0 h-[420px] w-[520px] rounded-full bg-yellow-400/20 blur-3xl" />
         </div>
 
@@ -68,17 +103,17 @@ export default function Home() {
                 <div className="text-xs text-white/70">San Jose, CA</div>
               </div>
             </div>
-            <nav className="hidden items-center gap-4 text-sm text-white/80 sm:flex">
-              <a className="hover:text-white" href="#announcements">
+            <div className="hidden items-center gap-2 sm:flex">
+              <TabButton active={tab === "announcements"} onClick={() => setTab("announcements")}>
                 Announcements
-              </a>
-              <a className="hover:text-white" href="#visit">
+              </TabButton>
+              <TabButton active={tab === "visit"} onClick={() => setTab("visit")}>
                 Visit
-              </a>
-              <a className="hover:text-white" href="#contact">
+              </TabButton>
+              <TabButton active={tab === "contact"} onClick={() => setTab("contact")}>
                 Contact
-              </a>
-            </nav>
+              </TabButton>
+            </div>
           </header>
 
           <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12">
@@ -96,12 +131,12 @@ export default function Home() {
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#visit"
+                <button
+                  onClick={() => setTab("visit")}
                   className="inline-flex items-center justify-center rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-semibold text-red-950 hover:bg-yellow-300"
                 >
                   Plan a visit
-                </a>
+                </button>
                 <a
                   href="https://www.youtube.com"
                   target="_blank"
@@ -112,16 +147,19 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-2">
-                {quickLinks.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/10"
-                  >
-                    {l.label}
-                  </a>
-                ))}
+              <div className="mt-8 flex flex-wrap items-center gap-2 sm:hidden">
+                <div className="mr-2 text-xs font-semibold uppercase tracking-widest text-white/60">
+                  {tabLabel}
+                </div>
+                <TabButton active={tab === "announcements"} onClick={() => setTab("announcements")}>
+                  Announcements
+                </TabButton>
+                <TabButton active={tab === "visit"} onClick={() => setTab("visit")}>
+                  Visit
+                </TabButton>
+                <TabButton active={tab === "contact"} onClick={() => setTab("contact")}>
+                  Contact
+                </TabButton>
               </div>
             </div>
 
@@ -137,18 +175,18 @@ export default function Home() {
                   <div className="mt-1 text-sm">1490 Saratoga Ave, San Jose, CA</div>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  <a
-                    href="#contact"
+                  <button
+                    onClick={() => setTab("contact")}
                     className="w-full rounded-2xl bg-red-600 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-red-500"
                   >
                     Get in touch
-                  </a>
-                  <a
-                    href="#announcements"
+                  </button>
+                  <button
+                    onClick={() => setTab("announcements")}
                     className="w-full rounded-2xl border border-white/20 bg-white/5 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-white/10"
                   >
-                    Read announcements
-                  </a>
+                    Announcements
+                  </button>
                 </div>
               </div>
             </div>
@@ -156,125 +194,128 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CONTENT */}
+      {/* TABBED CONTENT */}
       <main className="mx-auto w-full max-w-6xl px-4 py-12">
-        {/* Announcements */}
-        <section id="announcements" className="scroll-mt-24">
-          <SectionTitle kicker="Updates" title="Announcements" />
-          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
-            {announcements.map((a) => (
-              <div
-                key={a.title}
-                className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm"
-              >
-                <div className="text-base font-semibold text-red-950">{a.title}</div>
-                <p className="mt-2 text-sm leading-6 text-zinc-700">{a.body}</p>
-                {"links" in a && a.links ? (
-                  <div className="mt-4 flex flex-col gap-2">
-                    {a.links.map((l) => (
-                      <a
-                        key={l.href}
-                        href={l.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-between rounded-2xl border border-yellow-400/40 bg-gradient-to-r from-yellow-50 via-white to-yellow-50 px-4 py-3 text-sm font-semibold text-red-950 hover:from-yellow-100 hover:to-yellow-50"
-                      >
-                        <span>{l.label}</span>
-                        <span aria-hidden="true">→</span>
-                      </a>
-                    ))}
+        {tab === "announcements" ? (
+          <section>
+            <SectionTitle kicker="Updates" title="Announcements" />
+            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+              {announcements.map((a) => (
+                <div
+                  key={a.title}
+                  className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm"
+                >
+                  <div className="text-base font-semibold text-red-950">{a.title}</div>
+                  <p className="mt-2 text-sm leading-6 text-zinc-700">{a.body}</p>
+                  {"links" in a && a.links ? (
+                    <div className="mt-4 flex flex-col gap-2">
+                      {a.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-between rounded-2xl border border-yellow-400/40 bg-gradient-to-r from-yellow-50 via-white to-yellow-50 px-4 py-3 text-sm font-semibold text-red-950 hover:from-yellow-100 hover:to-yellow-50"
+                        >
+                          <span>{l.label}</span>
+                          <span aria-hidden="true">→</span>
+                        </a>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {tab === "visit" ? (
+          <section>
+            <SectionTitle kicker="New here?" title="Plan a Visit" />
+            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
+              <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-7">
+                <div className="text-base font-semibold text-red-950">Service Time</div>
+                <div className="mt-2 text-sm text-zinc-700">Sundays • 11:00 AM</div>
+                <div className="mt-5 text-base font-semibold text-red-950">Address</div>
+                <div className="mt-2 text-sm text-zinc-700">
+                  1490 Saratoga Ave, San Jose, CA
+                </div>
+                <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=1490%20Saratoga%20Ave%20San%20Jose%20CA"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-semibold text-red-950 hover:bg-yellow-300"
+                  >
+                    Open in Maps
+                  </a>
+                  <button
+                    onClick={() => setTab("contact")}
+                    className="rounded-2xl border border-red-900/20 bg-white px-5 py-3 text-sm font-semibold text-red-950 hover:bg-zinc-50"
+                  >
+                    Ask a question
+                  </button>
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-5">
+                <div className="text-base font-semibold text-red-950">What to Expect</div>
+                <ul className="mt-3 space-y-2 text-sm text-zinc-700">
+                  <li>• Friendly welcome & community</li>
+                  <li>• Worship and a Bible-centered message</li>
+                  <li>• Opportunities to connect through homegroups</li>
+                </ul>
+                <div className="mt-6 rounded-2xl bg-gradient-to-r from-yellow-50 via-white to-yellow-50 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-red-950/70">
+                    Domain
                   </div>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Visit */}
-        <section id="visit" className="mt-14 scroll-mt-24">
-          <SectionTitle kicker="New here?" title="Plan a Visit" />
-          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
-            <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-7">
-              <div className="text-base font-semibold text-red-950">Service Time</div>
-              <div className="mt-2 text-sm text-zinc-700">Sundays • 11:00 AM</div>
-              <div className="mt-5 text-base font-semibold text-red-950">Address</div>
-              <div className="mt-2 text-sm text-zinc-700">
-                1490 Saratoga Ave, San Jose, CA
-              </div>
-              <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=1490%20Saratoga%20Ave%20San%20Jose%20CA"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-2xl bg-yellow-400 px-5 py-3 text-sm font-semibold text-red-950 hover:bg-yellow-300"
-                >
-                  Open in Maps
-                </a>
-                <a
-                  href="#contact"
-                  className="rounded-2xl border border-red-900/20 bg-white px-5 py-3 text-sm font-semibold text-red-950 hover:bg-zinc-50"
-                >
-                  Ask a question
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-5">
-              <div className="text-base font-semibold text-red-950">What to Expect</div>
-              <ul className="mt-3 space-y-2 text-sm text-zinc-700">
-                <li>• Friendly welcome & community</li>
-                <li>• Worship and a Bible-centered message</li>
-                <li>• Opportunities to connect through homegroups</li>
-              </ul>
-              <div className="mt-6 rounded-2xl bg-gradient-to-r from-yellow-50 via-white to-yellow-50 p-4">
-                <div className="text-xs font-semibold uppercase tracking-widest text-red-950/70">
-                  Domain
-                </div>
-                <div className="mt-1 text-sm font-semibold text-red-950">
-                  abidechurch.org
+                  <div className="mt-1 text-sm font-semibold text-red-950">
+                    abidechurch.org
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
-        {/* Contact */}
-        <section id="contact" className="mt-14 scroll-mt-24">
-          <SectionTitle kicker="Reach us" title="Contact" />
-          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
-            <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-7">
-              <div className="text-base font-semibold text-red-950">Email</div>
-              <p className="mt-2 text-sm text-zinc-700">
-                Add your church email here (e.g., info@abidechurch.org).
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <a
-                  href="mailto:info@abidechurch.org"
-                  className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-500"
-                >
-                  Email us
-                </a>
-                <a
-                  href="https://www.youtube.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-2xl border border-red-900/20 bg-white px-5 py-3 text-sm font-semibold text-red-950 hover:bg-zinc-50"
-                >
-                  YouTube
-                </a>
+        {tab === "contact" ? (
+          <section>
+            <SectionTitle kicker="Reach us" title="Contact" />
+            <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-12">
+              <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-7">
+                <div className="text-base font-semibold text-red-950">Email</div>
+                <p className="mt-2 text-sm text-zinc-700">
+                  Add your church email here (e.g., info@abidechurch.org).
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <a
+                    href="mailto:info@abidechurch.org"
+                    className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-500"
+                  >
+                    Email us
+                  </a>
+                  <a
+                    href="https://www.youtube.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-2xl border border-red-900/20 bg-white px-5 py-3 text-sm font-semibold text-red-950 hover:bg-zinc-50"
+                  >
+                    YouTube
+                  </a>
+                </div>
+              </div>
+              <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-5">
+                <div className="text-base font-semibold text-red-950">Address</div>
+                <p className="mt-2 text-sm text-zinc-700">
+                  1490 Saratoga Ave, San Jose, CA
+                </p>
+                <div className="mt-6 text-xs text-zinc-500">
+                  © {new Date().getFullYear()} Abide Church. All rights reserved.
+                </div>
               </div>
             </div>
-            <div className="rounded-3xl border border-red-900/25 bg-white/80 p-6 text-zinc-900 shadow-sm lg:col-span-5">
-              <div className="text-base font-semibold text-red-950">Address</div>
-              <p className="mt-2 text-sm text-zinc-700">
-                1490 Saratoga Ave, San Jose, CA
-              </p>
-              <div className="mt-6 text-xs text-zinc-500">
-                © {new Date().getFullYear()} Abide Church. All rights reserved.
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
       </main>
 
       <footer className="border-t border-white/10 bg-red-950">
@@ -284,24 +325,24 @@ export default function Home() {
             <div className="text-xs text-white/70">San Jose, CA • 11:00 AM</div>
           </div>
           <div className="flex flex-wrap gap-2">
-            <a
+            <button
               className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold hover:bg-white/10"
-              href="#announcements"
+              onClick={() => setTab("announcements")}
             >
               Announcements
-            </a>
-            <a
+            </button>
+            <button
               className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold hover:bg-white/10"
-              href="#visit"
+              onClick={() => setTab("visit")}
             >
               Visit
-            </a>
-            <a
+            </button>
+            <button
               className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs font-semibold hover:bg-white/10"
-              href="#contact"
+              onClick={() => setTab("contact")}
             >
               Contact
-            </a>
+            </button>
           </div>
         </div>
       </footer>
