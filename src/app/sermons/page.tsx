@@ -1,5 +1,8 @@
 import { Card, ContentShell, HeroShell, SiteFooter } from "@/components/site-shell";
 
+const MAIN_VIDEO_ID = "7yqpn2mzMdM";
+const MAIN_VIDEO_TITLE = '2/15/2026 - "The Resurrection of Jesus"- Matthew 28:1-15';
+
 export default function SermonsPage() {
   return (
     <>
@@ -18,17 +21,14 @@ export default function SermonsPage() {
 
         <ContentShell>
           <Card>
-            <div className="text-base font-semibold">CCIC Media</div>
-            <p className="mt-2 text-sm text-black/80">
-              Videos are hosted on YouTube. If the embed doesn&apos;t load, open the
-              channel directly.
-            </p>
+            <div className="text-base font-semibold">Featured Sermon</div>
+            <div className="mt-2 text-sm text-black/80">{MAIN_VIDEO_TITLE}</div>
 
             <div className="mt-5 overflow-hidden rounded-2xl border border-black/10">
               <iframe
                 className="aspect-video w-full"
-                src={`https://www.youtube.com/embed?listType=user_uploads&list=CCICMediavideos`}
-                title="CCIC Media Videos"
+                src={`https://www.youtube.com/embed/${MAIN_VIDEO_ID}`}
+                title={MAIN_VIDEO_TITLE}
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -37,7 +37,7 @@ export default function SermonsPage() {
 
             <a
               className="mt-4 inline-flex rounded-2xl bg-abide-deep px-5 py-3 text-sm font-semibold text-white hover:bg-abide-deep-2"
-              href="https://www.youtube.com/c/CCICMediavideos"
+              href="https://www.youtube.com/@CCICMediavideos"
               target="_blank"
               rel="noreferrer"
             >
