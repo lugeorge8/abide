@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -69,13 +70,16 @@ export function SiteHeaderClient({ active }: { active?: string }) {
         className="flex items-center gap-4"
         onClick={() => setOpen(null)}
       >
-        <div className="grid h-16 w-16 place-items-center rounded-3xl bg-abide-gold font-black text-abide-deep text-2xl">
-          A
+        <div className="relative h-14 w-48 sm:h-16 sm:w-56">
+          <Image
+            src="/assets/header-logo.png"
+            alt="Abide Fellowship, A Ministry of CCIC"
+            fill
+            priority
+            className="object-contain"
+          />
         </div>
-        <div>
-          <div className="text-lg font-semibold tracking-tight text-black">
-            Abide Church
-          </div>
+        <div className="hidden sm:block">
           <div className="text-sm text-abide-muted">San Jose, CA</div>
         </div>
       </Link>
