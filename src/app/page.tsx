@@ -77,10 +77,10 @@ export default function Home() {
                 Home
               </Link>
               <Link
-                href="/about"
+                href="/im-new"
                 className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
               >
-                About Us
+                I&apos;m New
               </Link>
               <Link
                 href="/events"
@@ -89,28 +89,16 @@ export default function Home() {
                 Events
               </Link>
               <Link
-                href="/ministries"
+                href="/sermons"
                 className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
               >
-                Ministries
+                Sermons
               </Link>
               <Link
-                href="/resources"
+                href="/contact"
                 className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
               >
-                Resources
-              </Link>
-              <Link
-                href="/prayer"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                Prayer
-              </Link>
-              <Link
-                href="/jesus"
-                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
-              >
-                Curious about Jesus?
+                Contact
               </Link>
             </nav>
           </div>
