@@ -5,7 +5,7 @@ export default function AboutPage() {
     <>
       <HeroShell active={undefined}>
       <div>
-        <div className="text-xs font-semibold uppercase tracking-widest text-black/60">
+        <div className="text-xs font-semibold uppercase tracking-widest text-white/70">
           About Us
         </div>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">

@@ -14,7 +14,7 @@ export function HeroShell({
 }) {
   return (
     <div className="min-h-screen bg-white text-black">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-abide-deep text-white">
         {/* subtle accent glows */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-24 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-abide-gold/25 blur-3xl" />
