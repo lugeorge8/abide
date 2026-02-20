@@ -66,7 +66,7 @@ export function ScrollRopeNav() {
   const height = points[points.length - 1] + 18;
 
   return (
-    <div className="pointer-events-none fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
+    <div className="pointer-events-none fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
       <div className="pointer-events-auto rounded-3xl border border-black/10 bg-white/70 p-4 backdrop-blur">
         <div className="flex items-start gap-3">
           <svg
@@ -80,8 +80,8 @@ export function ScrollRopeNav() {
             {/* rope */}
             <path
               d={`M12 ${points[0]} C 12 ${points[0] + 10}, 12 ${points[points.length - 1] - 10}, 12 ${points[points.length - 1]}`}
-              stroke="rgba(20,109,63,0.45)"
-              strokeWidth={4}
+              stroke="rgba(20,109,63,0.35)"
+              strokeWidth={2.25}
               strokeLinecap="round"
             />
             {/* knots */}
@@ -92,20 +92,20 @@ export function ScrollRopeNav() {
                   <circle
                     cx={12}
                     cy={y}
-                    r={7}
-                    fill={isActive ? "rgba(97,206,112,0.95)" : "rgba(255,255,255,0.95)"}
+                    r={6}
+                    fill={isActive ? "rgba(97,206,112,0.25)" : "rgba(255,255,255,0.9)"}
                     stroke={
                       isActive
-                        ? "rgba(20,109,63,0.95)"
-                        : "rgba(20,109,63,0.35)"
+                        ? "rgba(20,109,63,0.85)"
+                        : "rgba(20,109,63,0.25)"
                     }
-                    strokeWidth={2}
+                    strokeWidth={1.75}
                   />
                   <circle
                     cx={12}
                     cy={y}
-                    r={2}
-                    fill={isActive ? "rgba(20,109,63,0.95)" : "rgba(20,109,63,0.35)"}
+                    r={1.75}
+                    fill={isActive ? "rgba(20,109,63,0.85)" : "rgba(20,109,63,0.25)"}
                   />
                 </g>
               );
