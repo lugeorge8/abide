@@ -37,7 +37,7 @@ export default function AnnouncementsPage() {
             Announcements
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-white/80">
-            What’s happening at Abide Church.
+            Discover what’s happening at Parish Church.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export default function AnnouncementsPage() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
             {announcements.map((a) => (
               <Card key={a.title}>
-                <div className="text-base font-semibold text-red-950">{a.title}</div>
+                <div className="text-base font-semibold text-black">{a.title}</div>
                 <p className="mt-2 text-sm leading-6 text-zinc-700">{a.body}</p>
                 {"links" in a && a.links ? (
                   <div className="mt-4 flex flex-col gap-2">
@@ -55,7 +55,7 @@ export default function AnnouncementsPage() {
                         href={l.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center justify-between rounded-2xl border border-yellow-400/40 bg-gradient-to-r from-yellow-50 via-white to-yellow-50 px-4 py-3 text-sm font-semibold text-red-950 hover:from-yellow-100 hover:to-yellow-50"
+                        className="inline-flex items-center justify-between rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm font-semibold text-black hover:bg-black/5"
                       >
                         <span>{l.label}</span>
                         <span aria-hidden="true">→</span>
