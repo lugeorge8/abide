@@ -3,7 +3,17 @@ import Link from "next/link";
 export function SiteHeader({
   active,
 }: {
-  active?: "home" | "ann" | "visit" | "contact";
+  active?:
+    | "home"
+    | "ann"
+    | "visit"
+    | "contact"
+    | "about"
+    | "events"
+    | "ministries"
+    | "resources"
+    | "prayer"
+    | "jesus";
 }) {
   const base =
     "rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5";
@@ -26,20 +36,29 @@ export function SiteHeader({
         <Link href="/" className={active === "home" ? activeCls : base}>
           Home
         </Link>
-        <Link
-          href="/announcements"
-          className={active === "ann" ? activeCls : base}
-        >
-          Announcements
+        <Link href="/about" className={active === "about" ? activeCls : base}>
+          About Us
         </Link>
-        <Link href="/visit" className={active === "visit" ? activeCls : base}>
-          Visit
+        <Link href="/events" className={active === "events" ? activeCls : base}>
+          Events
         </Link>
         <Link
-          href="/contact"
-          className={active === "contact" ? activeCls : base}
+          href="/ministries"
+          className={active === "ministries" ? activeCls : base}
         >
-          Contact
+          Ministries
+        </Link>
+        <Link
+          href="/resources"
+          className={active === "resources" ? activeCls : base}
+        >
+          Resources
+        </Link>
+        <Link href="/prayer" className={active === "prayer" ? activeCls : base}>
+          Prayer
+        </Link>
+        <Link href="/jesus" className={active === "jesus" ? activeCls : base}>
+          Curious about Jesus?
         </Link>
       </nav>
     </header>
