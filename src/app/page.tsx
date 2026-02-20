@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
 
 const featuredEvents = [
@@ -147,6 +149,81 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Community */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-14">
+        <h2 className="text-3xl font-semibold tracking-tight">Community</h2>
+        <p className="mt-2 text-sm text-abide-muted">
+          Find your place to grow, connect, and serve.
+        </p>
+
+        {(() => {
+          const communities: Array<{ title: string; href: string; img?: string }> = [
+            { title: "Finding Community", href: "/community" },
+            {
+              title: "Children",
+              href: "/children",
+              img: "/assets/children.jpg", // not available yet
+            },
+            {
+              title: "Youth",
+              href: "/youth",
+              img: "/assets/youth.jpg", // not available yet
+            },
+            { title: "Homegroup", href: "/homegroup", img: "/assets/homegroups.jpg" },
+            { title: "Abound", href: "/abound", img: "/assets/abound-header.png" },
+            { title: "Men", href: "/men", img: "/assets/men-ministry.png" },
+            { title: "Women", href: "/women", img: "/assets/womens-ministry-header.png" },
+            { title: "Prayer", href: "/prayer" },
+          ];
+
+          const exists = (src?: string) =>
+            !!src &&
+            [
+              "/assets/homegroups.jpg",
+              "/assets/abound-header.png",
+              "/assets/men-ministry.png",
+              "/assets/womens-ministry-header.png",
+            ].includes(src);
+
+          return (
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {communities.map((c) => {
+                const hasImg = exists(c.img);
+                return (
+                  <a
+                    key={c.href}
+                    href={c.href}
+                    className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm"
+                  >
+                    <div className="relative">
+                      {hasImg ? (
+                        <div className="relative aspect-[4/3] w-full">
+                          <Image
+                            src={c.img as string}
+                            alt={c.title}
+                            fill
+                            className="object-cover transition group-hover:scale-[1.02]"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          />
+                        </div>
+                      ) : (
+                        <div className="aspect-[4/3] w-full bg-black/5" />
+                      )}
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 p-4">
+                        <div className="text-base font-semibold text-white">
+                          {c.title}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          );
+        })()}
+      </section>
+
       {/* FAQ */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
         <h2 className="text-3xl font-semibold tracking-tight">Frequently Asked Questions</h2>
@@ -164,9 +241,7 @@ export default function Home() {
               {f.a ? (
                 <p className="mt-2 text-sm text-abide-muted">{f.a}</p>
               ) : (
-                <p className="mt-2 text-sm text-abide-muted">
-                  (Answer TBD)
-                </p>
+                <p className="mt-2 text-sm text-abide-muted">(Answer TBD)</p>
               )}
             </div>
           ))}
