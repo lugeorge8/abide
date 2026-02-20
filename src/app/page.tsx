@@ -51,61 +51,97 @@ import { SiteFooter } from "@/components/site-shell";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Top nav */}
-      <div className="border-b border-black/10 bg-white">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-2xl bg-abide-gold font-black text-abide-deep">
-              A
-            </div>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold">Abide Fellowship</div>
-              <div className="text-xs text-abide-muted">Across Generations</div>
-            </div>
-          </div>
+      {/* Header (shared) */}
+      <div className="mx-auto w-full max-w-6xl px-4 pt-6">
+        {/* We already have a sticky header in HeroShell via other pages.
+            Keep home nav consistent by using the same pattern here. */}
+        <div className="sticky top-0 z-20 -mx-2 rounded-3xl border border-black/10 bg-white/80 px-2 py-2 backdrop-blur">
+          <div className="flex items-center justify-between gap-6 px-2 py-2">
+            <Link href="/" className="flex items-center gap-4">
+              <div className="grid h-16 w-16 place-items-center rounded-3xl bg-abide-gold text-2xl font-black text-abide-deep">
+                A
+              </div>
+              <div>
+                <div className="text-lg font-semibold tracking-tight text-black">
+                  Abide Church
+                </div>
+                <div className="text-sm text-abide-muted">San Jose, CA</div>
+              </div>
+            </Link>
 
-          <nav className="hidden items-center gap-2 sm:flex">
-            <Link
-              href="/announcements"
-              className="rounded-2xl px-4 py-2 text-sm font-semibold text-black hover:bg-black/5"
-            >
-              Announcements
-            </Link>
-            <Link
-              href="/visit"
-              className="rounded-2xl px-4 py-2 text-sm font-semibold text-black hover:bg-black/5"
-            >
-              Visit
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-2xl px-4 py-2 text-sm font-semibold text-black hover:bg-black/5"
-            >
-              Contact
-            </Link>
-          </nav>
+            <nav className="hidden items-center gap-2 sm:flex">
+              <Link
+                href="/"
+                className="rounded-2xl bg-abide-gold px-5 py-3 text-base font-semibold text-abide-deep"
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/events"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                Events
+              </Link>
+              <Link
+                href="/ministries"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                Ministries
+              </Link>
+              <Link
+                href="/resources"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                Resources
+              </Link>
+              <Link
+                href="/prayer"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                Prayer
+              </Link>
+              <Link
+                href="/jesus"
+                className="rounded-2xl px-5 py-3 text-base font-semibold text-black/80 hover:bg-black/5"
+              >
+                Curious about Jesus?
+              </Link>
+            </nav>
+          </div>
         </div>
       </div>
 
       {/* Hero */}
       <section className="mx-auto w-full max-w-6xl px-4 py-14">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Abide in Christ
-              <span className="block">Across Generations</span>
-            </h1>
-            <div className="mt-4 text-lg font-semibold text-abide-teal">
-              Active Faith
-            </div>
+          <div className="relative lg:col-span-7">
+            {/* resonate-like circle background */}
+            <div className="pointer-events-none absolute -left-10 -top-10 h-[360px] w-[360px] rounded-full bg-abide-accent/15 blur-2xl" />
+            <div className="pointer-events-none absolute left-14 top-10 h-[260px] w-[260px] rounded-full border-2 border-abide-teal/25" />
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#schedule"
-                className="rounded-2xl bg-abide-deep px-5 py-3 text-sm font-semibold text-white hover:bg-abide-deep-2"
-              >
-                Service Schedule
-              </a>
+            <div className="relative">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+                Abide in Christ
+                <span className="block">Across Generations</span>
+              </h1>
+              <div className="mt-4 text-lg font-semibold text-abide-teal">
+                Active Faith
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#schedule"
+                  className="rounded-2xl bg-abide-deep px-5 py-3 text-sm font-semibold text-white hover:bg-abide-deep-2"
+                >
+                  Service Schedule
+                </a>
+              </div>
             </div>
           </div>
 
