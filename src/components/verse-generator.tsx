@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Verse = {
   ref: string;
@@ -55,8 +55,17 @@ function pickNext(currentIdx: number | null) {
 
 export function VerseGenerator() {
   const [idx, setIdx] = useState<number | null>(() => pickNext(null));
+  const [cooldownMs, setCooldownMs] = useState(0);
 
   const verse = useMemo(() => (idx === null ? null : VERSES[idx]), [idx]);
+
+  useEffect(() => {
+    if (cooldownMs <= 0) return;
+    const id = window.setInterval(() => {
+      setCooldownMs((ms) => Math.max(0, ms - 250));
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [cooldownMs]);
 
   return (
     <div>
@@ -75,10 +84,22 @@ export function VerseGenerator() {
 
         <button
           type="button"
-          className="mt-6 inline-flex rounded-2xl bg-abide-deep px-5 py-3 text-sm font-semibold text-white hover:bg-abide-deep-2"
-          onClick={() => setIdx((cur) => pickNext(cur))}
+          disabled={cooldownMs > 0}
+          className={
+            "mt-6 inline-flex rounded-2xl px-5 py-3 text-sm font-semibold text-white transition " +
+            (cooldownMs > 0
+              ? "bg-abide-deep/60 cursor-not-allowed"
+              : "bg-abide-deep hover:bg-abide-deep-2")
+          }
+          onClick={() => {
+            if (cooldownMs > 0) return;
+            setIdx((cur) => pickNext(cur));
+            setCooldownMs(5000);
+          }}
         >
-          give me a new verse!
+          {cooldownMs > 0
+            ? `cooldown… ${Math.ceil(cooldownMs / 1000)}s`
+            : "give me a new verse!"}
         </button>
       </div>
 
