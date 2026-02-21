@@ -56,7 +56,7 @@ export default function MenPage() {
                 <div className="text-base font-semibold">Photos</div>
                 <div className="mt-4 overflow-hidden rounded-2xl border border-black/10">
                   <Image
-                    src="/assets/header-logo.png"
+                    src="/assets/men-ministry-alt.png"
                     alt="Men’s Ministry"
                     width={1200}
                     height={800}
