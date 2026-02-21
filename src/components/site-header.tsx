@@ -69,8 +69,14 @@ export function SiteHeaderClient({ active }: { active?: string }) {
         className="flex items-center gap-4"
         onClick={() => setOpen(null)}
       >
-        <div className="grid h-16 w-16 place-items-center rounded-3xl bg-abide-gold font-black text-abide-deep text-2xl">
-          A
+        <div className="grid h-16 w-16 place-items-center rounded-3xl bg-black/5">
+          {/* Official Abide logo */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/abide-logo.png"
+            alt="Abide"
+            className="h-12 w-12 object-contain"
+          />
         </div>
         <div>
           <div className="text-lg font-semibold tracking-tight text-black">

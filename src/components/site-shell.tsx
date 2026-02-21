@@ -48,11 +48,17 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-6xl px-4 py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="inline-flex rounded-2xl bg-white px-4 py-3">
+            <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-4 py-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/abide-logo.png"
+                alt="Abide"
+                className="h-8 w-8 object-contain"
+              />
               <div className="text-sm font-semibold text-abide-deep">
                 Abide Fellowship
               </div>
-              <div className="mx-2 text-abide-muted">•</div>
+              <div className="mx-1 text-abide-muted">•</div>
               <div className="text-sm font-semibold text-abide-deep">
                 A Ministry of CCIC
               </div>
