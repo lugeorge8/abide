@@ -121,6 +121,20 @@ export default function Home() {
             >
               LATEST SERMONS
             </Link>
+            <a
+              href="https://en.ccic-sj.org/giving"
+              target="_blank"
+              rel="noreferrer"
+              className="mx-auto inline-flex w-full max-w-sm items-center justify-center rounded-none bg-zinc-900 px-10 py-4 text-xs font-semibold tracking-[0.2em] text-white hover:bg-zinc-800"
+            >
+              GIVING
+            </a>
+            <Link
+              href="/contact"
+              className="mx-auto inline-flex w-full max-w-sm items-center justify-center rounded-none bg-zinc-900 px-10 py-4 text-xs font-semibold tracking-[0.2em] text-white hover:bg-zinc-800"
+            >
+              CONTACT US
+            </Link>
           </div>
         </Reveal>
       </section>
