@@ -5,10 +5,10 @@
   --background: #ffffff; /* CCIC-like white */
   --foreground: #000000;
 
-  /* Extracted from example site */
-  --abide-accent: #61CE70;
-  --abide-deep: #146D3F;
-  --abide-deep-2: #176B41;
+  /* CCIC-like teal theme */
+  --abide-accent: #2f7f7b;
+  --abide-deep: #2f7f7b;
+  --abide-deep-2: #246c68;
   --abide-gold: #F2C36B;
   --abide-teal: #2f7f7b;
   --abide-muted: #7A7A7A;
