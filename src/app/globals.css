@@ -2,7 +2,7 @@
 
 :root {
   /* Base */
-  --background: #f7f2e8; /* beige white */
+  --background: #ffffff; /* CCIC-like white */
   --foreground: #000000;
 
   /* Extracted from example site */
@@ -10,7 +10,7 @@
   --abide-deep: #146D3F;
   --abide-deep-2: #176B41;
   --abide-gold: #F2C36B;
-  --abide-teal: #448481;
+  --abide-teal: #2f7f7b;
   --abide-muted: #7A7A7A;
 }
 
@@ -51,7 +51,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.045;
+  opacity: 0;
   mix-blend-mode: multiply;
   background-image:
     repeating-linear-gradient(
