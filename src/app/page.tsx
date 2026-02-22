@@ -45,7 +45,7 @@ export default function Home() {
 
               <div className="relative">
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                  Abide in Christ
+                  Abide In Christ
                   <span className="block">Across Generations</span>
                 </h1>
                 <div className="mt-4 text-lg font-semibold text-abide-teal">
