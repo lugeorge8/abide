@@ -1,284 +1,126 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
-import { ScrollRopeNav } from "@/components/scroll-rope-nav";
 import { SiteHeader, SiteFooter } from "@/components/site-shell";
 import { featuredEvents } from "@/lib/content";
 
-const faqs = [
-  {
-    q: "Where can I park?",
-    a: "",
-  },
-  {
-    q: "What should I wear?",
-    a: "",
-  },
-  {
-    q: "What about my kids?",
-    a: "",
-  },
-  {
-    q: "How do I join a home group?",
-    a: "",
-  },
+const schedule = [
+  { label: "Sunday School", value: "9:30 am - 10:30 am" },
+  { label: "Coffee and Fellowship", value: "10:30 am - 10:55 am" },
+  { label: "Worship", value: "11:00 am - 12:15 pm" },
+  { label: "Lunch", value: "12:15 pm" },
 ] as const;
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Header */}
+    <div className="min-h-screen bg-white text-zinc-900">
+      {/* Header (nav excluded from mimic request) */}
       <div className="mx-auto w-full max-w-6xl px-4 pt-6">
         <SiteHeader active="home" />
       </div>
 
-      <ScrollRopeNav />
-
-      {/* Hero */}
-      <section id="hero" className="mx-auto w-full max-w-6xl px-4 py-14">
-        <Reveal>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-            <div className="relative lg:col-span-7">
-              {/* resonate-like circle background */}
-              <div className="pointer-events-none absolute -left-10 -top-10 h-[360px] w-[360px] rounded-full bg-abide-accent/15 blur-2xl" />
-              <div className="pointer-events-none absolute left-14 top-10 h-[260px] w-[260px] rounded-full border-2 border-abide-teal/25" />
-
-              <div className="relative">
-                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                  Abide In Christ
-                  <span className="block">Across Generations</span>
-                </h1>
-                <div className="mt-4 text-lg font-semibold text-abide-teal">
-                  Active Faith
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href="#schedule"
-                    className="rounded-2xl bg-abide-deep px-5 py-3 text-sm font-semibold text-white hover:bg-abide-deep-2"
-                  >
-                    Service Schedule
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div
-                id="schedule"
-                className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
-              >
-                <div className="text-sm font-semibold">Service Schedule</div>
-                <div className="mt-4 space-y-3 text-sm">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <div className="font-semibold">Sunday School</div>
-                    <div className="text-abide-muted">9:30 - 10:30 AM</div>
-                  </div>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <div className="font-semibold">Coffee & Conversation</div>
-                    <div className="text-abide-muted">10:30 - 11:00 AM</div>
-                  </div>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <div className="font-semibold">Worship</div>
-                    <div className="text-abide-muted">11:00 - 12:15 PM</div>
-                  </div>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <div className="font-semibold">Lunch</div>
-                    <div className="text-abide-muted">12:15 PM</div>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <div className="text-2xl font-semibold">Join Us This Sunday</div>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-abide-gold px-5 py-3 text-sm font-semibold text-abide-deep hover:opacity-90"
-                  >
-                    join us
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Featured Events */}
-      <section
-        id="featured-events"
-        className="mx-auto w-full max-w-6xl px-4 py-14"
-      >
-        <Reveal>
-          <div className="flex items-end justify-between gap-4">
+      {/* Hero (full-bleed image + centered overlay text) */}
+      <section className="mt-6">
+        <div className="relative h-[340px] w-full overflow-hidden sm:h-[420px] lg:h-[520px]">
+          <Image
+            src="/assets/ccic-hero.svg"
+            alt="Sanctuary"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 flex items-center justify-center px-4 text-center text-white">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                Featured Events
-              </h2>
-              <p className="mt-2 text-sm text-abide-muted">
-                Discover what’s happening at Parish Church.
-              </p>
+              <div className="font-serif text-xl italic tracking-wide opacity-95 sm:text-2xl">
+                Welcome to
+              </div>
+              <div className="mt-2 font-serif text-4xl font-semibold tracking-[0.12em] sm:text-6xl">
+                ABIDE FELLOWSHIP
+              </div>
+              <div className="mt-2 font-serif text-2xl italic tracking-wide opacity-95 sm:text-3xl">
+                English Ministry
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {/* Welcome */}
+      <section className="mx-auto w-full max-w-4xl px-4 py-14">
+        <Reveal>
+          <h2 className="text-center text-3xl font-semibold tracking-[0.18em] text-zinc-800">
+            WELCOME
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-7 text-zinc-700 sm:text-base">
+            We invite you to join our spiritual family at Abide Fellowship, where
+            we seek to grow closer to God through biblical teaching, prayer, and
+            fellowship, all rooted in Christian love and grace. We want to know
+            Christ and make Him known.
+          </p>
+
+          <div className="mx-auto mt-10 max-w-2xl space-y-2 text-sm text-zinc-700 sm:text-base">
+            {schedule.map((s) => (
+              <div key={s.label} className="flex flex-wrap gap-x-2">
+                <span className="font-semibold">{s.label}:</span>
+                <span>{s.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/im-new"
+              className="inline-flex items-center justify-center rounded-none bg-zinc-900 px-10 py-3 text-xs font-semibold tracking-[0.22em] text-white hover:bg-zinc-800"
+            >
+              I&apos;M NEW
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
+      <div className="border-t border-zinc-200" />
+
+      {/* Announcements */}
+      <section className="mx-auto w-full max-w-4xl px-4 py-14">
+        <Reveal>
+          <h2 className="text-center text-2xl font-semibold tracking-[0.18em] text-zinc-800">
+            ANNOUNCEMENTS
+          </h2>
+
+          <div className="mt-10 space-y-6 text-sm leading-7 text-zinc-700 sm:text-base">
             {featuredEvents.map((e) => (
-              <div
-                key={`${e.date}-${e.body.slice(0, 12)}`}
-                className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
-              >
-                <div className="text-sm font-semibold text-abide-teal">
-                  {e.date}
-                </div>
-                <p className="mt-2 text-sm leading-6 text-black/80">{e.body}</p>
+              <div key={`${e.date}-${e.body.slice(0, 16)}`}>
+                <div className="font-semibold text-zinc-900">{e.date}</div>
+                <div className="mt-1 whitespace-pre-line">{e.body}</div>
               </div>
             ))}
           </div>
-        </Reveal>
-      </section>
 
-      {/* Community */}
-      <section id="community" className="mx-auto w-full max-w-6xl px-4 py-14">
-        <Reveal>
-          <h2 className="text-3xl font-semibold tracking-tight">Community</h2>
-          <p className="mt-2 text-sm text-abide-muted">
-            Find your place to grow, connect, and serve.
+          <p className="mt-12 text-sm leading-7 text-zinc-700 sm:text-base">
+            To encourage the participation, full functioning, and growth of the
+            Body of Christ, we are inviting all congregants to our in-person
+            worship services on Sundays. For those who have unique and/or medical
+            challenges, a video recording of the service will be uploaded later on
+            Sunday.
           </p>
 
-          {(() => {
-            const communities: Array<{
-              title: string;
-              href: string;
-              img?: string;
-            }> = [
-              { title: "Finding Community", href: "/community" },
-              {
-                title: "Children",
-                href: "/children",
-                img: "/assets/children.jpg", // not available yet
-              },
-              {
-                title: "Youth",
-                href: "/youth",
-                img: "/assets/youth.jpg", // not available yet
-              },
-              { title: "Homegroup", href: "/homegroup", img: "/assets/homegroups.jpg" },
-              { title: "Abound", href: "/abound", img: "/assets/abound-header.png" },
-              { title: "Men", href: "/men", img: "/assets/men-ministry.png" },
-              { title: "Women", href: "/women", img: "/assets/womens-ministry-header.png" },
-              { title: "Prayer", href: "/prayer" },
-            ];
-
-            const exists = (src?: string) =>
-              !!src &&
-              [
-                "/assets/homegroups.jpg",
-                "/assets/abound-header.png",
-                "/assets/men-ministry.png",
-                "/assets/womens-ministry-header.png",
-              ].includes(src);
-
-            return (
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
-                {communities.map((c) => {
-                  const hasImg = exists(c.img);
-                  return (
-                    <a
-                      key={c.href}
-                      href={c.href}
-                      className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm"
-                    >
-                      <div className="relative">
-                        {hasImg ? (
-                          <div className="relative aspect-[4/3] w-full">
-                            <Image
-                              src={c.img as string}
-                              alt={c.title}
-                              fill
-                              className="object-cover transition group-hover:scale-[1.02]"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
-                            />
-                          </div>
-                        ) : (
-                          <div className="aspect-[4/3] w-full bg-black/5" />
-                        )}
-                        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
-                        <div className="absolute inset-x-0 bottom-0 p-4">
-                          <div className="text-base font-semibold text-white">
-                            {c.title}
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            );
-          })()}
-        </Reveal>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="mx-auto w-full max-w-6xl px-4 py-14">
-        <Reveal>
-          <h2 className="text-3xl font-semibold tracking-tight">
-            Frequently Asked Questions
-          </h2>
-          <p className="mt-2 text-sm text-abide-muted">
-            Have questions? We have the answers!
-          </p>
-
-          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {faqs.map((f) => (
-              <div
-                key={f.q}
-                className="rounded-3xl border border-black/10 bg-white p-6 shadow-sm"
-              >
-                <div className="text-base font-semibold">{f.q}</div>
-                {f.a ? (
-                  <p className="mt-2 text-sm text-abide-muted">{f.a}</p>
-                ) : (
-                  <p className="mt-2 text-sm text-abide-muted">(Answer TBD)</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Lead Pastor */}
-      <section id="pastor" className="mx-auto w-full max-w-6xl px-4 py-14">
-        <Reveal>
-          <h2 className="text-3xl font-semibold tracking-tight">
-            A WORD FROM OUR LEAD PASTOR
-          </h2>
-
-          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-8 shadow-sm">
-            <div className="text-2xl font-semibold">“YOU ARE WELCOME HERE!”</div>
-            <p className="mt-4 text-sm leading-7 text-black/80">
-              We invite you to join our spiritual family at CCIC, where we seek to
-              grow closer to God through biblical teaching, prayer, and fellowship,
-              all rooted in Christian love and grace. We want to know Christ and
-              make Him known. Our English congregation’s Sunday service is as
-              follows:
-            </p>
-            <div className="mt-6 text-sm font-semibold text-abide-muted">
-              Lead Pastor
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* Weekly Newsletter */}
-      <section
-        id="newsletter"
-        className="mx-auto w-full max-w-6xl px-4 py-14"
-      >
-        <Reveal>
-          <h2 className="text-3xl font-semibold tracking-tight">Weekly Newsletter</h2>
-          <p className="mt-2 text-sm text-abide-muted">Weekly Newsletter</p>
-          <div className="mt-6 rounded-3xl border border-black/10 bg-white p-6 shadow-sm">
-            <div className="text-base font-semibold">Weekly Newsletter</div>
-            <p className="mt-2 text-sm text-black/80">(Link/Signup TBD)</p>
+          <div className="mt-10 grid gap-6">
+            <Link
+              href="/announcements"
+              className="mx-auto inline-flex w-full max-w-sm items-center justify-center rounded-none bg-zinc-900 px-10 py-4 text-xs font-semibold tracking-[0.2em] text-white hover:bg-zinc-800"
+            >
+              WEEKLY ENGLISH SERVICE BULLETIN
+            </Link>
+            <Link
+              href="/sermons"
+              className="mx-auto inline-flex w-full max-w-sm items-center justify-center rounded-none bg-zinc-900 px-10 py-4 text-xs font-semibold tracking-[0.2em] text-white hover:bg-zinc-800"
+            >
+              LATEST SERMONS
+            </Link>
           </div>
         </Reveal>
       </section>
